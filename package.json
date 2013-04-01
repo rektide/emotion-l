@@ -1,0 +1,16 @@
+{
+  "name": "emotion-l",
+  "version": "0.9.0",
+  "description": "emotionml markup editor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.voodoowarez.com/emotionαl.git"
+  },
+  "author": "rektide",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
