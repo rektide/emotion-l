@@ -12,15 +12,14 @@
 </tr>
 <tr>
 	<td>
-		<select ng-model="add-voc">
+		<select ng-model="addVoc">
 			<option ng-repeat="vocab in vocabs" style="color:{{ colors[vocab.type] }}">{{ vocab.id }}</option>
-			</option>
 		</select>
 	</td>
 	<td>
-		<select ng-model="add-item">
+		<select ng-model="addItem">
 			<option>[all]</option>
-			<option ng-repeat="item in vocabs[add-voc].items">{{ item }}</option>
+			<option ng-repeat="item in vocabs[addVoc].items">{{ item }}</option>
 		</select>
 	</td>
 	<td></td>
