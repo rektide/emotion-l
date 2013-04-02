@@ -21,10 +21,10 @@ emo.provider("vocabService", {
 		this.vocab= vocab
 	},
 	$get: function(){
-		return this.vocab
+		// hardcoded - "big6"
+		return ["anger","disgust","fear","happiness","sadness","surprise"]
 	}
 });
-emo.controller("emotionalController", ["$log","$scope","vocab", function($log,$scope,vocab){
-	debugger
-	$scope.vocab = ["angulastical"]
+emo.controller("emotionalController", ["$log","$scope","vocabService", function($log,$scope,vocabService){
+	$scope.vocab = vocabService
 }]);
