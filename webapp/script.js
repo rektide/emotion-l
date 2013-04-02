@@ -51,8 +51,11 @@ emo.controller("emotionalController", ["$log","$scope","vocabService", function(
 	  }]
 	// i'd like to not build this data structure but instead use two ng-repeats, the outter w/o a tag, but don't think angularjs knows how to. pregen this index instead:
 	$scope.vocabsById= {}
-	for(var i in $scope.vocabs)
+	for(var i in $scope.vocabs){
+		var voc= $scope.vocabs[i]
 		$scope.vocabsById[$scope.vocabs[i].id]= $scope.vocabs[i]
+		voc.i= parseInt(i)
+	}
 	// TODO: configurable in app
 	$scope.colors= {
 		category: "rgb(50,0,0)",
@@ -61,7 +64,25 @@ emo.controller("emotionalController", ["$log","$scope","vocabService", function(
 	}
 	$scope.vocab= vocabService
 	$scope.$watch("addItem", function(nv, ov){
+		if(nv === undefined || nv == ""){
+			return
+		}
 		var voc= $scope.vocabsById[$scope.addVoc]
-		console.log("ITEM",nv,ov,$scope.addVoc,voc)	
+		console.log("ITEM",nv,ov,$scope.addVoc,voc)
+		if(nv == "[all]"){
+			// TODO: handle [all] and null
+			console.warn("[all] added - not implemented")
+			return
+		}
+		// TODO: insure not a duplicate entry already in active
+		// add into active
+		var itemI= voc.items.indexOf(nv)
+		if(itemI == -1){
+			console.warn("unknown addition")
+			return
+		}
+		var active= $scope.active
+		active.push([voc.i,itemI])
+		console.log("active",active)
 	})
 }]);
