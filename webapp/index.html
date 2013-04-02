@@ -10,7 +10,23 @@
 	<td><input type="range" min="0" max="1" step="0.02" ng-model="val[$index]"/></td>
 	<td>{{ val[$index] }}</td>
 </tr>
+<tr>
+	<td><select><option>big6</option></select></td>
+	<td><select>
+</tr>
 </table>
+
+<p>output</p>
+<p style="font-size:10pt; background:rgb(240,240,255)">
+&lt;emotionml xmlns="http://www.w3.org/2009/10/emotionml"&gt;
+<span ng-repeat="emotion in vocab" id="v{{ $index }}">
+	&lt;emotion category-set="http://www.w3.org/TR/emotion-voc/xml#big6"&gt;
+		&lt;category&gt; name="{{ emotion }}" value="{{ val[$index] }}" /&lt;
+	&lt;/emotion&gt;
+</span>
+&lt;emotionml&gt;
+</p>
+
 </div>
 
 <script src="angular.js"></script>
