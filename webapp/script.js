@@ -26,5 +26,33 @@ emo.provider("vocabService", {
 	}
 });
 emo.controller("emotionalController", ["$log","$scope","vocabService", function($log,$scope,vocabService){
+	// TODO: provide from vocabService
+	$scope.vocabs= [{
+		url:"http://www.w3.org/TR/emotion-voc/xml#big6",
+		id:"big6",
+		type:"category",
+		items:["anger","disgust","fear","happiness","sadness","surprise"]
+	  }, {
+		url:"http://www.w3.org/TR/emotion-voc/xml#everyday-categories",
+		id:"everyday-categories",
+		type:"category",
+		items:["affectionate","afraid","amused","angry","bored","confident","content","disappointed","excited","happy","interested","loving","pleased","relaxed","sad","satisfied","worried"]
+	  }, {
+		url:"http://www.w3.org/TR/emotion-voc/xml#big6",
+		id:"fsre-dimensions",
+		type:"dimension",
+		items:["valence","potency","arousal","unpredictability"]
+	  }, {
+		url:"http://www.w3.org/TR/emotion-voc/xml#ooc-appraisals",
+		id:"ooc-appraisals",
+		type:"appraisal",
+		items:["desirability","praiseworthiness","appealingness","desirability-for-other","deservingness","liking","likelihood","effort","strength-of-identification","expectation-of-deviation","familiarity"]
+	  }]
+	// TODO: configurable in app
+	$scope.colors= {
+		category: "rgb(50,0,0)",
+		dimension: "rgb(0,50,0)",
+		appraisal: "rgb(0,0,50)"
+	}
 	$scope.vocab = vocabService
 }]);
