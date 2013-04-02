@@ -29,9 +29,9 @@
 <p>output</p>
 <p style="font-size:10pt; background:rgb(240,240,255)">
 &lt;emotionml xmlns="http://www.w3.org/2009/10/emotionml"&gt;
-<span ng-repeat="emotion in vocab" id="v{{ $index }}">
+<span ng-repeat="emotion in vocab" id="v{{ $index }}"><br/>
 	&lt;emotion category-set="http://www.w3.org/TR/emotion-voc/xml#big6"&gt;
-		&lt;category&gt; name="{{ emotion }}" value="{{ val[$index] }}" /&lt;
+		&lt;category name="{{ emotion }}" value="{{ val[$index] }}"/&gt;
 	&lt;/emotion&gt;
 </span>
 &lt;emotionml&gt;
