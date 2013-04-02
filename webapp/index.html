@@ -11,8 +11,18 @@
 	<td>{{ val[$index] }}</td>
 </tr>
 <tr>
-	<td><select><option>big6</option></select></td>
-	<td><select></select></td>
+	<td>
+		<select ng-model="add-voc">
+			<option ng-repeat="vocab in vocabs" style="color:{{ colors[vocab.type] }}">{{ vocab.id }}</option>
+			</option>
+		</select>
+	</td>
+	<td>
+		<select ng-model="add-item">
+			<option>[all]</option>
+			<option ng-repeat="item in vocabs[add-voc].items">{{ item }}</option>
+		</select>
+	</td>
 	<td></td>
 </tr>
 </table>
