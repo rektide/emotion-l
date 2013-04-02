@@ -58,5 +58,5 @@ emo.controller("emotionalController", ["$log","$scope","vocabService", function(
 		dimension: "rgb(0,50,0)",
 		appraisal: "rgb(0,0,50)"
 	}
-	$scope.vocab = vocabService
+	$scope.vocab= vocabService
 }]);
