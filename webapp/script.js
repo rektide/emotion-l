@@ -59,4 +59,8 @@ emo.controller("emotionalController", ["$log","$scope","vocabService", function(
 		appraisal: "rgb(0,0,50)"
 	}
 	$scope.vocab= vocabService
+
+	$scope.$watch("addItem", function(nv, ov){
+		console.log("ITEM",nv,ov)
+	})
 }]);
