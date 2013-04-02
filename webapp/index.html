@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="emotional" ng-init="val= [], addVoc= ''">
+<html ng-app="emotional" ng-init="val=[]; addVoc=''">
 <head></head>
 <body>
 
@@ -13,13 +13,17 @@
 <tr>
 	<td>
 		<select ng-model="addVoc">
-			<option ng-repeat="vocab in vocabs" style="color:{{ colors[vocab.type] }}" value="{{ vocab.id }}" >{{ vocab.id }}</option>
+			<option ng-repeat="vocab in vocabs" style="color:{{ colors[vocab.type] }}" >{{ vocab.id }}</option>
 		</select>
 	</td>
 	<td>
 		<select ng-model="addItem">
 			<option>[all]</option>
-			<option ng-repeat="item in vocabs[addVoc].items">{{ item }}</option>
+			<!-- want, tag-less ng-repeat:
+			ng-repeat"vocab in vocabs" filter="{id: addVoc}"
+				<option ng-repeat="item in vocab">
+			-->
+			<option ng-repeat="item in vocabsById[addVoc].items">{{ item }}</option>
 		</select>
 	</td>
 	<td></td>

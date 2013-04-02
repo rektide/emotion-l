@@ -48,6 +48,10 @@ emo.controller("emotionalController", ["$log","$scope","vocabService", function(
 		type:"appraisal",
 		items:["desirability","praiseworthiness","appealingness","desirability-for-other","deservingness","liking","likelihood","effort","strength-of-identification","expectation-of-deviation","familiarity"]
 	  }]
+	// i'd like to not build this data structure but instead use two ng-repeats, the outter w/o a tag, but don't think angularjs knows how to. pregen this index instead:
+	$scope.vocabsById= {}
+	for(var i in $scope.vocabs)
+		$scope.vocabsById[$scope.vocabs[i].id]= $scope.vocabs[i]
 	// TODO: configurable in app
 	$scope.colors= {
 		category: "rgb(50,0,0)",
