@@ -58,9 +58,9 @@ emo.controller("emotionalController", ["$log","$scope","vocabService", function(
 	}
 	// TODO: configurable in app
 	$scope.colors= {
-		category: "rgb(50,0,0)",
-		dimension: "rgb(0,50,0)",
-		appraisal: "rgb(0,0,50)"
+		category: "rgb(80,0,0)",
+		dimension: "rgb(0,80,0)",
+		appraisal: "rgb(0,0,80)"
 	}
 	$scope.vocab= vocabService
 	$scope.e= function(v,i){
@@ -73,4 +73,5 @@ emo.controller("emotionalController", ["$log","$scope","vocabService", function(
 	$scope.$watch("active",function(a,b){
 		console.log("active",a,"|",b)
 	})
+	$scope.addVoc= "big6"
 }]);

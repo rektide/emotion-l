@@ -1,27 +1,27 @@
 <!doctype html>
-<html ng-app="emotional" ng-init="val=[]; addVoc=''; addItem=''">
+<html ng-app="emotional" ng-init="val=[]">
 <head></head>
 <body>
 
 <div ng-controller="emotionalController" style="background:rgb(255,240,240)">
 <table id="emotions">
 <tr ng-repeat="a in active" id="e{{ $index }}">
-	<td>{{ vocabsById[a[0]].id }}:{{ vocabsById[a[0]].items[a[1]] }}</td>
+	<td style="color:{{ colors[vocabsById[a[0]].type] }}">{{ vocabsById[a[0]].id }}:{{ vocabsById[a[0]].items[a[1]] }}</td>
 	<td><input type="range" min="0" max="1" step="0.02" ng-model="a[2]"/></td>
 	<td>{{ a[2] }}</td>
 </tr>
 <tr>
 	<td>
-		<select ng-model="addVoc" size=6>
-			<option ng-repeat="vocab in vocabs" style="color:{{ colors[vocab.type] }}">{{ vocab.id }}</option>
+		<select ng-model="addVoc" size=6><!-- base ng-options not good enough, yet ng-model busted on load, creates it's own very confused blank option -->
+			<option ng-repeat="vocab in vocabs" style="color:{{ colors[vocab.type] }}" title="{{ vocab.type }}" value="{{ vocab.id }}">{{ vocab.id }}</option>
 		</select>
 	</td>
 	<td>
-		<select ng-model="addItem" ng-click="active.push([addVoc,addItem,0.0])" size=6>
-			<option>[all]</option>
+		<select ng-model="addItem" ng-click="active.push([addVoc,addItem,0.0])" size=6><!-- another blank option created on init -->
+			<option value="all">[all]</option>
 			<!-- want, tag-less ng-repeat:
-			ng-repeat"vocab in vocabs" filter="{id: addVoc}"
-				<option ng-repeat="item in vocab">
+			  ng-repeat"vocab in vocabs" filter="{id: addVoc}"
+			  <option ng-repeat="item in vocab">
 			-->
 			<option ng-repeat="item in vocabsById[addVoc].items" value="{{ $index }}">{{ item }}</option>
 		</select>
@@ -35,7 +35,7 @@
 <p>output</p>
 <p style="font-size:10pt; background:rgb(240,240,255)">
 &lt;emotionml xmlns="http://www.w3.org/2009/10/emotionml"&gt;
-<span ng-repeat="emotion in vocab" id="v{{ $index }}"><br/>
+<span ng-repeat="emotion in vocab" id="v{{ $index }}"><br/><!-- this span is for angular, not me -->
 	&lt;emotion category-set="http://www.w3.org/TR/emotion-voc/xml#big6"&gt;
 		&lt;category name="{{ emotion }}" value="{{ val[$index] }}"/&gt;
 	&lt;/emotion&gt;
