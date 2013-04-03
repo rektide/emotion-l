@@ -5,8 +5,8 @@
 
 <div ng-controller="emotionalController" style="background:rgb(255,240,240)">
 <table id="emotions">
-<tr ng-repeat="emotion in vocab" id="e{{ $index }}">
-	<td>{{ emotion }}</td>
+<tr ng-repeat="a in actions" id="e{{ $index }}">
+	<td>{{ a }}XXX</td>
 	<td><input type="range" min="0" max="1" step="0.02" ng-model="val[$index]"/></td>
 	<td>{{ val[$index] }}</td>
 </tr>
@@ -17,7 +17,7 @@
 		</select>
 	</td>
 	<td>
-		<select ng-model="addItem" size=6>
+		<select ng-model="addItem" ng-click="active.push([addVoc,addItem])" size=6>
 			<option>[all]</option>
 			<!-- want, tag-less ng-repeat:
 			ng-repeat"vocab in vocabs" filter="{id: addVoc}"

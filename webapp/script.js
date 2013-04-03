@@ -63,26 +63,14 @@ emo.controller("emotionalController", ["$log","$scope","vocabService", function(
 		appraisal: "rgb(0,0,50)"
 	}
 	$scope.vocab= vocabService
-	$scope.$watch("addItem", function(nv, ov){
-		if(nv === undefined || nv == ""){
-			return
+	$scope.e= function(v,i){
+		if(v instanceof Array){
+			i= v[1]
+			v= v[0]
 		}
-		var voc= $scope.vocabsById[$scope.addVoc]
-		console.log("ITEM",nv,ov,$scope.addVoc,voc)
-		if(nv == "[all]"){
-			// TODO: handle [all] and null
-			console.warn("[all] added - not implemented")
-			return
-		}
-		// TODO: insure not a duplicate entry already in active
-		// add into active
-		var itemI= voc.items.indexOf(nv)
-		if(itemI == -1){
-			console.warn("unknown addition")
-			return
-		}
-		var active= $scope.active
-		active.push([voc.i,itemI])
-		console.log("active",active)
-	})
+		return $scope.vocabs[v].items[i]
+	}
+	$scope.added= function(){
+		console.log("ADDED",arguments)
+	}
 }]);
