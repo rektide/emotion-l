@@ -70,7 +70,7 @@ emo.controller("emotionalController", ["$log","$scope","vocabService", function(
 		}
 		return $scope.vocabs[v].items[i]
 	}
-	$scope.added= function(){
-		console.log("ADDED",arguments)
-	}
+	$scope.$watch("active",function(a,b){
+		console.log("active",a,"|",b)
+	})
 }]);
