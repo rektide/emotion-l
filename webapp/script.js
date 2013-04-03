@@ -62,6 +62,10 @@ emo.controller("emotionalController", ["$log","$scope","vocabService", function(
 		dimension: "rgb(0,80,0)",
 		appraisal: "rgb(0,0,80)"
 	}
+	$scope.background= {
+		false: "rgb(255,255,170)",
+		true: "rgb(212,212,212)"
+	}
 	$scope.vocab= vocabService
 	$scope.e= function(v,i){
 		if(v instanceof Array){
@@ -74,4 +78,32 @@ emo.controller("emotionalController", ["$log","$scope","vocabService", function(
 		console.log("active",a,"|",b)
 	})
 	$scope.addVoc= "big6"
+	$scope.isActive= function(e,v){
+		v= v||$scope.addVoc
+		if(!v)
+			return false
+		var cur= $scope.vocabsById[v]
+		if(!cur){
+			console.warn("bad isActive ask, no addVoc")
+			return false
+		}
+		if(!isNaN(e) && e !== null && e !== undefined){
+			for(var i in $scope.active){
+				var a= $scope.active[i]
+				if(a[0] == v && a[1] == e){
+					console.log("active",e)
+					return true
+				}
+			}
+		}else{
+			var needs= $scope.vocabsById[v].items.length
+			for(var i in $scope.active){
+				var a= $scope.active[i]
+				if(a[0] == v)
+					--needs
+			}
+			return needs <= 0
+		}
+		return false
+	}
 }]);

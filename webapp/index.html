@@ -18,12 +18,12 @@
 	</td>
 	<td>
 		<select ng-model="addItem" ng-click="active.push([addVoc,addItem,0.0])" size=6><!-- another blank option created on init -->
-			<option value="all">[all]</option>
+			<option value="all" style="background-color:{{ background[isActive(null,addVoc)] }}">[all]</option>
 			<!-- want, tag-less ng-repeat:
 			  ng-repeat"vocab in vocabs" filter="{id: addVoc}"
 			  <option ng-repeat="item in vocab">
 			-->
-			<option ng-repeat="item in vocabsById[addVoc].items" value="{{ $index }}">{{ item }}</option>
+			<option ng-repeat="item in vocabsById[addVoc].items" value="{{ $index }}" style="background-color:{{ background[isActive($index)] }}">{{ item }}</option>
 		</select>
 	</td>
 	<td></td>
