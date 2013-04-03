@@ -35,9 +35,9 @@
 <p>output</p>
 <p style="font-size:10pt; background:rgb(240,240,255)">
 &lt;emotionml xmlns="http://www.w3.org/2009/10/emotionml"&gt;
-<span ng-repeat="emotion in vocab" id="v{{ $index }}"><br/><!-- this span is for angular, not me -->
-	&lt;emotion category-set="http://www.w3.org/TR/emotion-voc/xml#big6"&gt;
-		&lt;category name="{{ emotion }}" value="{{ val[$index] }}"/&gt;
+<span ng-repeat="a in active" id="v{{ $index }}"><br/><!-- this span is for angular, not me -->
+	&lt;emotion {{ vocabsById[a[0]].type }}-set="{{ vocabsById[a[0]].url }}"&gt;
+		&lt;{{ vocabsById[a[0]].type }} name="{{ vocabsById[a[0]].items[a[1]] }}" value="{{ a[2] }}"/&gt;
 	&lt;/emotion&gt;
 </span>
 &lt;emotionml&gt;

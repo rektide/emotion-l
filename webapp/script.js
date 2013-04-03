@@ -91,7 +91,6 @@ emo.controller("emotionalController", ["$log","$scope","vocabService", function(
 			for(var i in $scope.active){
 				var a= $scope.active[i]
 				if(a[0] == v && a[1] == e){
-					console.log("active",e)
 					return true
 				}
 			}
